@@ -6,7 +6,143 @@
     <title>Create Account</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="image.ico" type="image/x-icon">
+    <!-- Add Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1200px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .left-side {
+            flex: 1;
+            background: url('https://images.unsplash.com/photo-1567016432779-094069958ea5?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center; /* Background image */
+            background-size: cover; /* Ensure the image covers the container */
+            color: #ffffff; /* Text color */
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .left-side h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Shadow for better readability */
+        }
+        .left-side p {
+            color: #dddddd;
+            font-size: 1.2em;
+        }
+        .right-side {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .language-selector {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .language-selector select {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .form-container h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .google {
+            background-color: #db4437;
+        }
+        .google:hover {
+            background-color: #c1351d;
+        }
+        .facebook {
+            background-color: #3b5998;
+        }
+        .facebook:hover {
+            background-color: #2d4373;
+        }
+        .social-btn i {
+            margin-right: 10px;
+        }
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #aaa;
+        }
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        form button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: #fff;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form button:hover {
+            background-color: #218838;
+        }
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
         /* Modal styles */
         .modal {
             display: none; /* Hidden by default */
@@ -17,7 +153,6 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgb(0,0,0);
             background-color: rgba(0,0,0,0.4);
             padding-top: 60px;
         }
@@ -37,12 +172,12 @@
             float: right;
             font-size: 28px;
             font-weight: bold;
+            cursor: pointer;
         }
         .close:hover,
         .close:focus {
             color: black;
             text-decoration: none;
-            cursor: pointer;
         }
         .modal-header {
             font-size: 1.5em;
@@ -75,8 +210,16 @@
             </div>
             <div class="form-container">
                 <h2>Create Account</h2>
-                <a href="https://accounts.google.com/b/0/AddMailService"><button class="social-btn google">Continue with Google</button></a>
-                <a href="https://www.facebook.com"><button class="social-btn facebook">Continue with Facebook</button></a>
+                <a href="https://accounts.google.com/b/0/AddMailService">
+                    <button class="social-btn google">
+                        <i class="fab fa-google"></i> Continue with Google
+                    </button>
+                </a>
+                <a href="https://www.facebook.com">
+                    <button class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i> Continue with Facebook
+                    </button>
+                </a>
                 <div class="divider">- OR -</div>
                 <form id="createAccountForm">
                     <input type="text" id="fullName" placeholder="Full Name" required>
