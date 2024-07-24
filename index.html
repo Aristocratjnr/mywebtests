@@ -334,15 +334,85 @@
     .faq-item.active .expand-icon {
       transform: rotate(180deg);
     }
-    
-    @media (max-width: 768px) {
-      .faq-header h1 {
-        font-size: 32px;
-      }
 
-      .faq-item h3 {
-        font-size: 16px;
-      }
+    
+        /* Responsive Styles */
+        @media (max-width: 991px) {
+            .navbar ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .navbar ul.active {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                height: 400px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.25rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-text h2 {
+                font-size: 2rem;
+            }
+
+            .about-stats {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero {
+                height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-stats {
+                flex-direction: column;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.875rem;
+            }
+
+            .about-text h2 {
+                font-size: 1.5rem;
+            }
+        }
         /* Heart icon toggle style */
         .red-heart img {
             filter: invert(29%) sepia(95%) saturate(5481%) hue-rotate(358deg) brightness(94%) contrast(104%);
