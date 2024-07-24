@@ -53,7 +53,7 @@
             padding: 0;
         }
 
-        .navbar a {
+        .navbar li a {
       color: #333;
       text-decoration: none;
       margin: 0 20px;
@@ -370,13 +370,14 @@
             <div class="menu-toggle">☰</div>
             <div class="search-login">
                 <input type="text" placeholder="What are you looking for?">
+                <i>
                 <a href="#" id="heart-icon">
                     <img src="love.png" alt="Heart Icon" style="height: 24px; width: 24px;">
-                </a>
-               
+                </a></i>
+               <i>
                 <a href="./pages/account.html" style="color: #333; text-decoration: none; font-size: 1.2rem;">
                     <img src="user.png" alt="user-icon" style="height: 24px; width: 24px;">
-                </a>
+                </a></i>
                 
             </div>
         </div>
@@ -399,7 +400,7 @@
                 <p>“In the arena of amet, the spirit of elit thrives within Lorem Ipsum dolor, invigorating and liberating the vulputate. To our understanding, the interdum flourishes and the aliquet minimizes the value of mattresses. It's the integral role of class aptent taciti sociosqu shaping our coastlines and influencing our weddings that passes through the portal of inceptos himenaeos. Despite the unending rhythmic pulses of a Curabitur timepiece heart, the seemingly unappealing condimentum lobortis stays rooted in its position.”</p>
                 <div class="about-stats">
                     <div>
-                        <h3>15</h3>
+                        <h3 id="products">0</h3>
                         <p>Years experience</p>
                     </div>
                     <div>
@@ -407,11 +408,11 @@
                         <p>Awards gained</p>
                     </div>
                     <div>
-                        <h3>1079</h3>
+                        <h3 id="artisans">0</h3>
                         <p>Products sold</p>
                     </div>
                     <div>
-                        <h3>200</h3>
+                        <h3 id="years">0</h3>
                         <p>People trained</p>
                     </div>
                 </div>
@@ -523,6 +524,32 @@
             const content = item.querySelector('.content');
             content.style.display = content.style.display === 'block' ? 'none' : 'block';
           });
+
+          document.addEventListener("DOMContentLoaded", () => {
+            let productsElement = document.getElementById("products");
+            let artisansElement = document.getElementById("artisans");
+            let yearsElement = document.getElementById("years");
+            
+            let productsCount = 0;
+            let artisansCount = 0;
+            let yearsCount = 0;
+            
+            const productsLimit = 1500;
+            const artisansLimit = 300;
+            const yearsLimit = 20;
+            
+            const updateCounts = () => {
+                if (productsCount < productsLimit) productsElement.textContent = ++productsCount;
+                if (artisansCount < artisansLimit) artisansElement.textContent = ++artisansCount;
+                if (yearsCount < yearsLimit) yearsElement.textContent = ++yearsCount;
+                
+                if (productsCount < productsLimit || artisansCount < artisansLimit || yearsCount < yearsLimit) {
+                    requestAnimationFrame(updateCounts);
+                }
+            };
+            
+            requestAnimationFrame(updateCounts);
+        });
         });
       </script>
 </body>

@@ -26,7 +26,7 @@ body {
 }
 
 .left-side {
-    background: url('sign.png') no-repeat center center;
+    background: url('/sign.png') no-repeat center center;
     background-size: cover;
     position: relative;
 }
