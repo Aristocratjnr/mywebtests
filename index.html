@@ -341,6 +341,11 @@
       .faq-item h3 {
         font-size: 16px;
       }
+        /* Heart icon toggle style */
+        .red-heart img {
+            filter: invert(29%) sepia(95%) saturate(5481%) hue-rotate(358deg) brightness(94%) contrast(104%);
+        }
+
     }
     </style>
 </head>
@@ -362,15 +367,14 @@
             <div class="menu-toggle">☰</div>
             <div class="search-login">
                 <input type="text" placeholder="What are you looking for?">
-               <i>
-                <a href="#" style="color: #333; text-decoration: none; font-size: 1.2rem;">
+                
+                <a href="#" id="heart-icon">
                     <img src="love.png" alt="Heart Icon" style="height: 24px; width: 24px;">
                 </a>
-               </i> 
-                <i><a href="./pages/account.html" style="color: #333; text-decoration: none; font-size: 1.2rem;">
+                <a href="./pages/account.html" style="color: #333; text-decoration: none; font-size: 1.2rem;">
                     <img src="user.png" alt="user-icon" style="height: 24px; width: 24px;">
                 </a>
-                </i>
+              
             </div>
         </div>
     </header>
@@ -498,6 +502,11 @@
     <!-- Include FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
+        // Toggle the red-heart class to change the heart icon color
+        document.getElementById('heart-icon').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior if needed
+            this.classList.toggle('red-heart');
+        });
         // Toggle navigation menu on small screens
         document.querySelector('.menu-toggle').addEventListener('click', () => {
           document.querySelector('nav ul').classList.toggle('active');
