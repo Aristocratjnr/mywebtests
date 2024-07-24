@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayujati</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+        /* Global styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo img {
+            width: 100px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #DAA520;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .search-login {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-login input {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .heart-icon,
+        .user-icon {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('home.png') no-repeat center center/cover;
+            height: 600px;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin-top: 70px; /* Adjust based on header height */
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .hero-buttons button {
+            background: #DAA520;
+            border: none;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-weight: 700;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .hero-buttons button:hover {
+            background: #c3a43a;
+        }
+
+        /* About Us Section */
+        .about-us {
+            padding: 4rem 2rem;
+            background: #fff;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .about-content img {
+            width: 50%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            width: 50%;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .about-stats {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .about-stats div {
+            text-align: center;
+        }
+
+        .about-stats h3 {
+            font-size: 2rem;
+            color: #DAA520;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-stats p {
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .search-login {
+                display: none;
+            }
+
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-content img,
+            .about-text {
+                width: 100%;
+            }
+
+            .about-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="image.png" alt="Kayujati Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Collection</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">☰</div>
+            <div class="search-login">
+                <input type="text" placeholder="What are you looking for?">
+                <i class="heart-icon">❤️</i>
+                <i class="user-icon">👤</i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Welcome to Kayujati</h1>
+            <p>Your satisfaction is our priority</p>
+            <div class="hero-buttons">
+                <button onclick="alert('Shop Ready Stock clicked')">Shop Ready Stock</button>
+                <button onclick="alert('Pre-order Instead clicked')">Pre-order Instead</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-us">
+        <div class="about-content">
+            <img src="test.png" alt="Who We Are Image">
+            <div class="about-text">
+                <h2>Who We Are</h2>
+                <p>“In the arena of amet, the spirit of elit thrives within Lorem Ipsum dolor, invigorating and liberating the vulputate. To our understanding, the interdum flourishes and the aliquet minimizes the value of mattresses. It's the integral role of class aptent taciti sociosqu shaping our coastlines and influencing our weddings that passes through the portal of inceptos himenaeos. Despite the unending rhythmic pulses of a Curabitur timepiece heart, the seemingly unappealing condimentum lobortis stays rooted in its position.”</p>
+                <div class="about-stats">
+                    <div>
+                        <h3>15</h3>
+                        <p>Years experience</p>
+                    </div>
+                    <div>
+                        <h3>64</h3>
+                        <p>Awards gained</p>
+                    </div>
+                    <div>
+                        <h3>1079</h3>
+                        <p>Products sold</p>
+                    </div>
+                    <div>
+                        <h3>200</h3>
+                        <p>People trained</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; Copyright 2024, All Rights Reserved</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
