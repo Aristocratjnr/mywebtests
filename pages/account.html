@@ -6,6 +6,57 @@
     <title>Create Account</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="image.ico" type="image/x-icon">
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-header {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .modal-body {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        .redirect-message {
+            font-size: 1.1em;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -27,15 +78,63 @@
                 <button class="social-btn google">Continue with Google</button>
                 <button class="social-btn facebook">Continue with Facebook</button>
                 <div class="divider">- OR -</div>
-                <form>
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="password" placeholder="Password" required>
+                <form id="createAccountForm">
+                    <input type="text" id="fullName" placeholder="Full Name" required>
+                    <input type="email" id="emailAddress" placeholder="Email Address" required>
+                    <input type="password" id="password" placeholder="Password" required>
                     <button type="submit">Create Account</button>
                 </form>
                 <p>Already have an account? <a href="./signin.html">Login</a></p>
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">Account Created</div>
+            <div class="modal-body">
+                <p>Your account has been created successfully!</p>
+                <p class="redirect-message">Sending you to log in...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get modal element
+        var modal = document.getElementById("successModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Form submission event
+        document.getElementById('createAccountForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Display the modal
+            modal.style.display = "block";
+
+            // Redirect after a delay
+            setTimeout(function() {
+                window.location.href = "./signin.html";
+            }, 3000); // 3000 milliseconds = 3 seconds
+
+            // Optionally, you can clear the form fields
+            event.target.reset();
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
