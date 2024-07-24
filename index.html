@@ -36,7 +36,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 20px 0;
+            border-bottom: 1px solid #ccc;
+            background-color: #fff;
         }
 
         .logo img {
@@ -51,13 +53,14 @@
             padding: 0;
         }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 700;
-            transition: color 0.3s;
-        }
-
+        .navbar a {
+      color: #333;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
         nav ul li a:hover {
             color: #DAA520;
         }
@@ -367,14 +370,14 @@
             <div class="menu-toggle">☰</div>
             <div class="search-login">
                 <input type="text" placeholder="What are you looking for?">
-                
                 <a href="#" id="heart-icon">
                     <img src="love.png" alt="Heart Icon" style="height: 24px; width: 24px;">
                 </a>
+               
                 <a href="./pages/account.html" style="color: #333; text-decoration: none; font-size: 1.2rem;">
                     <img src="user.png" alt="user-icon" style="height: 24px; width: 24px;">
                 </a>
-              
+                
             </div>
         </div>
     </header>
