@@ -107,12 +107,18 @@ body {
     height: 24px;
     border-radius: 50%;
     border: 1px solid #ccc;
+    transition: border-color 0.3s, transform 0.3s;
 }
 
 .color.black { background-color: #000; }
 .color.grey { background-color: #888; }
 .color.gold { background-color: #DAA520; }
 .color.white { background-color: #FFF; }
+
+.color:hover {
+    border-color: #333;
+    transform: scale(1.1);
+}
 
 .actions {
     display: flex;
