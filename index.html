@@ -422,41 +422,68 @@
         }
 
         
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 20px;
-    }
+    /* Services Section */
+.services {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
 
-    .section {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 40px;
-      align-items: center;
-      margin-bottom: 60px;
-    }
+.section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4rem;
+}
 
-    .section:nth-child(even) {
-      grid-template-columns: 1fr 1fr;
-    }
+.section img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    .section img {
-      width: 80px;
-      height: 80px;
-    }
+.section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
 
-    .section h2 {
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 20px;
-    }
+.section p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
 
-    .section p {
-      font-size: 16px;
-      color: #666;
-      margin-top: 10px;
-    }
+.section-content {
+  max-width: 600px;
+  margin-left: 2rem;
+}
 
+.section:nth-child(even) {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.section:nth-child(even) .section-content {
+  margin-left: 0;
+  margin-right: 2rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+  .section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .section img {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-content {
+    margin: 0;
+  }
+}
     .cta {
       text-align: center;
     }
@@ -561,36 +588,37 @@
           </div>
         </div>
         </section>
-            <section class="services">
-              <div class="section">
-                <img src="designing.png" alt="Designing">
-                <div>
-                  <h2>DESIGNING</h2>
-                  <p>Lorem ipsum dolor sit amet, per inceptos himenaeus. Curabitur tempus urna at turpis condimentum lobortis.</p>
-                </div>
+        <section class="services">
+            <div class="section">
+              <img src="designing.png" alt="Designing">
+              <div class="section-content">
+                <h2>DESIGNING</h2>
+                <p>Lorem ipsum dolor sit amet, per inceptos himenaeus. Curabitur tempus urna at turpis condimentum lobortis.</p>
               </div>
-              <div class="section">
-                <div>
-                  <h2>LAYOUTING</h2>
-                  <p>Lorem ipsum dolor sit amet, per inceptos himenaeus. Curabitur tempus urna at turpis condimentum lobortis.</p>
-                </div>
-                <img src="layouting.png" alt="Layouting">
+            </div>
+            <div class="section">
+              <img src="layouting.png" alt="Layouting">
+              <div class="section-content">
+                <h2>LAYOUTING</h2>
+                <p>Lorem ipsum dolor sit amet, per inceptos himenaeus. Curabitur tempus urna at turpis condimentum lobortis.</p>
               </div>
-              <div class="section">
-                <img src="creating.png" alt="Creating">
-                <div>
-                  <h2>CREATING</h2>
-                  <p>Lorem ipsum dolor sit amet, per inceptos himenaeus. Curabitur tempus urna at turpis condimentum lobortis.</p>
-                </div>
+            </div>
+            <div class="section">
+              <img src="creating.png" alt="Creating">
+              <div class="section-content">
+                <h2>CREATING</h2>
+                <p>Lorem ipsum dolor sit amet, per inceptos himenaeus. Curabitur tempus urna at turpis condimentum lobortis.</p>
               </div>
-              <div class="section">
-                <div>
-                  <h2>FINISHING</h2>
-                  <p>Lorem ipsum dolor sit amet, per inceptos himenaeus. Curabitur tempus urna at turpis condimentum lobortis.</p>
-                </div>
-                <img src="finishing.png" alt="Finishing">
+            </div>
+            <div class="section">
+              <img src="finishing.png" alt="Finishing">
+              <div class="section-content">
+                <h2>FINISHING</h2>
+                <p>Lorem ipsum dolor sit amet, per inceptos himenaeus. Curabitur tempus urna at turpis condimentum lobortis.</p>
               </div>
-            </section>
+            </div>
+          </section>
+          
             <div class="cta">
               <a href="#">Contact Us</a>
             </div>
