@@ -420,6 +420,61 @@
         .red-heart img {
             filter: invert(29%) sepia(95%) saturate(5481%) hue-rotate(358deg) brightness(94%) contrast(104%);
         }
+
+        
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 40px;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .section:nth-child(even) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .section img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .section p {
+      font-size: 16px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .cta {
+      text-align: center;
+    }
+
+    .cta a {
+      display: inline-block;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .cta a:hover {
+      background-color: #444;
+    }
     </style>
 </head>
 <body>
@@ -506,6 +561,40 @@
           </div>
         </div>
         </section>
+            <section class="services">
+              <div class="section">
+                <img src="designing.png" alt="Designing">
+                <div>
+                  <h2>DESIGNING</h2>
+                  <p>Lorem ipsum dolor sit amet, per inceptos himenaeus. Curabitur tempus urna at turpis condimentum lobortis.</p>
+                </div>
+              </div>
+              <div class="section">
+                <div>
+                  <h2>LAYOUTING</h2>
+                  <p>Lorem ipsum dolor sit amet, per inceptos himenaeus. Curabitur tempus urna at turpis condimentum lobortis.</p>
+                </div>
+                <img src="layouting.png" alt="Layouting">
+              </div>
+              <div class="section">
+                <img src="creating.png" alt="Creating">
+                <div>
+                  <h2>CREATING</h2>
+                  <p>Lorem ipsum dolor sit amet, per inceptos himenaeus. Curabitur tempus urna at turpis condimentum lobortis.</p>
+                </div>
+              </div>
+              <div class="section">
+                <div>
+                  <h2>FINISHING</h2>
+                  <p>Lorem ipsum dolor sit amet, per inceptos himenaeus. Curabitur tempus urna at turpis condimentum lobortis.</p>
+                </div>
+                <img src="finishing.png" alt="Finishing">
+              </div>
+            </section>
+            <div class="cta">
+              <a href="#">Contact Us</a>
+            </div>
+          </div>
     <section class="faq-container">
         <div class="faq-header">
           <h1>Frequently Asked Questions</h1>
