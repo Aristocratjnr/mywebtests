@@ -423,7 +423,7 @@
         }
 
         
-    /* Services Section */
+  /* Services Section */
 .services {
   padding: 4rem 2rem;
   background-color: #f9f9f9;
@@ -433,6 +433,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 4rem;
+  padding: 20px;
 }
 
 .section img {
@@ -440,6 +441,7 @@
   height: 100px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
 }
 
 .section h2 {
@@ -457,7 +459,6 @@
 
 .section-content {
   max-width: 600px;
-  margin-left: 2rem;
 }
 
 .section:nth-child(even) {
@@ -465,9 +466,14 @@
   text-align: right;
 }
 
+.section:nth-child(even) img {
+  margin-left: 20px;
+  margin-right: 0;
+}
+
 .section:nth-child(even) .section-content {
+  margin-right: 20px;
   margin-left: 0;
-  margin-right: 2rem;
 }
 
 /* Responsive Styles */
@@ -478,13 +484,14 @@
   }
 
   .section img {
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem;
   }
 
   .section-content {
     margin: 0;
   }
 }
+
     .cta {
       text-align: center;
     }
