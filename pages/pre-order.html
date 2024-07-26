@@ -162,6 +162,58 @@
         .modal-button:hover {
             background-color: #0056b3;
         }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 28px;
+            }
+
+            .form-group label {
+                font-size: 16px;
+            }
+
+            .form-group input, .form-group textarea {
+                font-size: 14px;
+            }
+
+            .submit-button {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .form-info {
+                font-size: 14px;
+            }
+
+            .modal-content {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .form-group label {
+                font-size: 14px;
+            }
+
+            .form-group input, .form-group textarea {
+                font-size: 12px;
+                padding: 10px;
+            }
+
+            .submit-button {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+
+            .form-info {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -170,7 +222,7 @@
             <h1>Pre-Order Form📩</h1>
         </header>
 
-        <form id="pre-order-form"  method="POST">
+        <form id="pre-order-form" method="POST">
             <div class="form-group">
                 <label for="full-name">Full Name</label>
                 <input type="text" id="full-name" name="full-name" required>
