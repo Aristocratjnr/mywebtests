@@ -167,7 +167,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>Pre-Order Form</h1>
+            <h1>Pre-Order Form📩</h1>
         </header>
 
         <form action="https://app.form2chat.io/f/99543127"id="pre-order-form"  method="POST">
@@ -212,6 +212,7 @@
         document.getElementById('pre-order-form').addEventListener('submit', function(e) {
             e.preventDefault();
             document.getElementById('modal').style.display = 'flex';
+            this.reset();  // Reset the form fields
         });
 
         document.getElementById('close-modal').addEventListener('click', function() {
