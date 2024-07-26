@@ -99,9 +99,10 @@
 
         .order-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
         }
 
         .order-item img {
@@ -129,6 +130,7 @@
         .order-summary .total {
             font-weight: bold;
             font-size: 20px;
+            margin-top: 10px;
         }
 
         .checkout-button {
@@ -247,6 +249,7 @@
 
             .checkout-button {
                 font-size: 12px;
+                padding: 12px;
             }
         }
     </style>
@@ -272,7 +275,7 @@
                     </div>
                     <div class="form-group">
                         <label for="country">Country</label>
-                        <select id="country" name="country" required >
+                        <select id="country" name="country" required>
                             <option value="">Select Country</option>
                             <option>Ghana</option>
                             <!-- Add more countries as needed -->
@@ -290,7 +293,7 @@
                     </div>
                     <div class="form-group">
                         <label for="card-expiry">Expiry Date</label>
-                        <input type="date" id="card-expiry" name="card-expiry" placeholder="MM/YY" required>
+                        <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY" required>
                     </div>
                     <div class="form-group">
                         <label for="card-cvc">CVC</label>
