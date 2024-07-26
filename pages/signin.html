@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="signin.css">
     <link rel="icon" href="image.ico" type="image/x-icon">
     <style>
-        /* Global styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -17,22 +16,27 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            box-sizing: border-box; /* Added to include padding and border in the element's total width and height */
         }
         .container {
             display: flex;
-            width: 80%;
+            flex-direction: row; /* Side by side for larger screens */
+            width: 90%;
             max-width: 1200px;
             background: #ffffff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
-        .left-side {
+        .left-side, .right-side {
             flex: 1;
-            background: url('https://images.unsplash.com/photo-1567016432779-094069958ea5?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center; /* Background image */
-            background-size: cover; /* Ensure the image covers the container */
-            color: #ffffff; /* Text color */
             padding: 20px;
+            box-sizing: border-box;
+        }
+        .left-side {
+            background: url('https://images.unsplash.com/photo-1567016432779-094069958ea5?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+            background-size: cover;
+            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -41,15 +45,13 @@
         .left-side h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Shadow for better readability */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         .left-side p {
             color: #dddddd;
             font-size: 1.2em;
         }
         .right-side {
-            flex: 1;
-            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -123,10 +125,9 @@
         a:hover {
             text-decoration: underline;
         }
-
         /* Modal styles */
         .modal {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             z-index: 1;
             left: 0;
@@ -171,6 +172,30 @@
         .redirect-message {
             font-size: 1.1em;
             color: #555;
+        }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stack vertically on small screens */
+            }
+            .left-side, .right-side {
+                padding: 10px;
+            }
+            .left-side {
+                min-height: 200px; /* Minimum height for better visual structure */
+            }
+            .form-container {
+                width: 100%;
+                padding: 0 10px;
+            }
+            .language-selector {
+                text-align: center;
+            }
+            .forgot {
+                display: block;
+                margin-top: 10px;
+                text-align: right;
+            }
         }
     </style>
 </head>
@@ -223,31 +248,26 @@
     </div>
 
     <script>
-        // Get modal element
+                // Get modal element
         var modal = document.getElementById("successModal");
-
-        // Get the <span> element that closes the modal
+              // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
         // Form submission event
         document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting the traditional way
-
-            // Display the modal
+            event.preventDefault();
+        // Display the modal
             modal.style.display = "block";
-
             // Redirect after a delay
             setTimeout(function() {
-                window.location.href = "dashboard.html"; // Redirect to the dashboard or another page
-            }, 3000); // 3000 milliseconds = 3 seconds
+                window.location.href = "dashboard.html";
+            }, 3000);
         });
-
-        // When the user clicks on <span> (x), close the modal
+         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
             modal.style.display = "none";
         }
-
-        // When the user clicks anywhere outside of the modal, close it
+         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
