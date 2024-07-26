@@ -19,15 +19,17 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden; /* Prevent scrollbars */
         }
         .container {
             display: flex;
-            width: 80%;
+            width: 90%;
             max-width: 1200px;
             background: #ffffff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            flex-direction: column; /* Stack left and right sides on small screens */
         }
         .left-side {
             flex: 1;
@@ -39,15 +41,16 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            height: 300px; /* Fixed height for small screens */
         }
         .left-side h1 {
-            font-size: 2.5em;
+            font-size: 2em;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Shadow for better readability */
         }
         .left-side p {
             color: #dddddd;
-            font-size: 1.2em;
+            font-size: 1em;
         }
         .right-side {
             flex: 1;
@@ -190,6 +193,56 @@
         .redirect-message {
             font-size: 1.1em;
             color: #555;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stack sections vertically on small screens */
+            }
+            .left-side {
+                height: 200px; /* Reduce height for smaller screens */
+                padding: 10px;
+            }
+            .left-side h1 {
+                font-size: 1.8em;
+            }
+            .left-side p {
+                font-size: 0.9em;
+            }
+            .form-container {
+                width: 90%; /* Use more width on smaller screens */
+            }
+            .social-btn {
+                font-size: 0.9em;
+            }
+            .divider {
+                font-size: 1em;
+            }
+            .modal-content {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .left-side h1 {
+                font-size: 1.5em;
+            }
+            .left-side p {
+                font-size: 0.8em;
+            }
+            .form-container {
+                width: 95%; /* Use almost full width on very small screens */
+            }
+            .social-btn {
+                font-size: 0.8em;
+            }
+            .divider {
+                font-size: 0.9em;
+            }
+            .modal-content {
+                width: 95%;
+            }
         }
     </style>
 </head>
