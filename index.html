@@ -529,7 +529,7 @@
             </nav>
             <div class="menu-toggle">☰</div>
             <div class="search-login">
-                <input type="text" placeholder="What are you looking for?">
+                <input type="text" id="search-input" placeholder="What are you looking for?">
                 <i>
                 <a href="#" id="heart-icon">
                     <img src="love.png" alt="Heart Icon" style="height: 24px; width: 24px;">
@@ -711,6 +711,42 @@
         document.querySelector('.menu-toggle').addEventListener('click', () => {
           document.querySelector('nav ul').classList.toggle('active');
         });
+            // Function to highlight text
+function highlightText(searchText) {
+  if (!searchText) return;
+
+  // Recursive function to traverse and highlight text nodes
+  function highlightNode(node) {
+    if (node.nodeType === 3) { // Text node
+      const match = node.nodeValue.match(new RegExp(searchText, 'i'));
+      if (match) {
+        const mark = document.createElement('mark');
+        const start = node.splitText(match.index);
+        const end = start.splitText(searchText.length);
+        mark.appendChild(start.cloneNode(true));
+        start.replaceWith(mark);
+      }
+    } else if (node.nodeType === 1 && node.childNodes && !/(script|style)/i.test(node.tagName)) {
+      // Traverse child nodes if not a script or style tag
+      Array.from(node.childNodes).forEach(highlightNode);
+    }
+  }
+
+  // Remove previous highlights
+  document.querySelectorAll('mark').forEach((mark) => {
+    mark.replaceWith(...mark.childNodes);
+  });
+
+  // Start the highlighting process
+  highlightNode(document.body);
+}
+
+// Event listener for the search input
+document.getElementById('search-input').addEventListener('input', (e) => {
+  const searchText = e.target.value.trim();
+  highlightText(searchText);
+});
+
     
         // Toggle FAQ answer visibility
         const faqItems = document.querySelectorAll('.faq-item');
