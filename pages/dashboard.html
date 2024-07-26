@@ -300,11 +300,7 @@
                         <h3>Sales Overview</h3>
                         <canvas id="salesChart"></canvas>
                     </div>
-                    <div class="chart-container">
-                        <h3>Product Categories</h3>
-                        <canvas id="categoriesChart"></canvas>
-                    </div>
-                </div>
+                   
             </section>
         </main>
     </div>
@@ -350,38 +346,7 @@
             }
         });
 
-        // Categories Chart
-        const ctxCategories = document.getElementById('categoriesChart').getContext('2d');
-        const categoriesChart = new Chart(ctxCategories, {
-            type: 'pie',
-            data: {
-                labels: ['Sofas', 'Chairs', 'Tables', 'Bookshelves'],
-                datasets: [{
-                    label: 'Product Categories',
-                    data: [30, 25, 20, 15], // Example data
-                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'],
-                    borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                let label = context.label || '';
-                                let value = context.raw;
-                                return `${label}: ${value}%`;
-                            }
-                        }
-                    },
-                    legend: {
-                        position: 'bottom',
-                    }
-                }
-            }
-        });
+      
     </script>
 </body>
 </html>
