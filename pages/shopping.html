@@ -51,8 +51,8 @@
 
         .cart-item {
             display: flex;
-            flex-direction: row;
-            align-items: flex-start;
+            justify-content: space-between;
+            align-items: center;
             padding: 15px;
             border-bottom: 1px solid #ddd;
             background-color: #fafafa;
@@ -64,11 +64,11 @@
             width: 120px;
             height: auto;
             border-radius: 8px;
-            margin-right: 15px;
         }
 
         .cart-item-details {
             flex: 1;
+            margin-left: 20px;
         }
 
         .cart-item-details h3 {
@@ -168,98 +168,39 @@
         }
 
         /* Media Queries */
-        @media (max-width: 1200px) {
-            .container {
-                margin: 10px;
-                padding: 15px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .cart-item {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .cart-item img {
-                width: 100%;
-                max-width: 150px;
-                margin-right: 0;
-            }
-
-            .cart-item-details {
-                margin: 10px 0;
-            }
-
-            .cart-item-actions {
-                margin-top: 10px;
-            }
-
-            .checkout-button {
-                width: 100%;
-                padding: 15px;
-            }
-        }
-
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 24px;
-            }
-
             .cart-item img {
-                max-width: 120px;
+                width: 80px;
             }
 
             .cart-item-details h3 {
                 font-size: 18px;
             }
 
-            .cart-item-details p {
-                font-size: 16px;
-            }
-
-            .cart-summary h2 {
+            .cart-summary h2, .cart-summary p {
                 font-size: 20px;
             }
 
-            .cart-summary p {
-                font-size: 16px;
+            .checkout-button {
+                font-size: 14px;
             }
         }
 
         @media (max-width: 480px) {
             header h1 {
-                font-size: 20px;
-            }
-
-            .cart-item img {
-                max-width: 100px;
+                font-size: 28px;
             }
 
             .cart-item-details h3 {
                 font-size: 16px;
             }
 
-            .cart-item-details p {
-                font-size: 14px;
-            }
-
-            .cart-summary h2 {
+            .cart-summary h2, .cart-summary p {
                 font-size: 18px;
             }
 
-            .cart-summary p {
-                font-size: 14px;
-            }
-
-            .quantity-controls {
-                flex-direction: column;
-            }
-
-            .quantity-controls button {
-                width: 100%;
-                margin-bottom: 5px;
+            .checkout-button {
+                font-size: 12px;
             }
         }
     </style>
@@ -278,33 +219,35 @@
                 <h2>Summary</h2>
                 <p>Total Items: <span id="total-items">0</span></p>
                 <p>Total Price: <span id="total-price">$0.00</span></p>
-                <button id="checkout-button" class="checkout-button">Checkout</button>
+                <button class="checkout-button" onclick="proceedToCheckout()">Checkout</button>
             </div>
         </main>
     </div>
+
     <script>
+        // Example cart items
         const cartItems = [
             { id: 1, name: 'Tibet Five Set Kitchen Cabinet', price: 499.99, image: 'room.png', quantity: 1 },
             // Add more items here
         ];
-    
+
         function updateCart() {
             const cartContainer = document.querySelector('.cart-items');
             const totalItems = document.getElementById('total-items');
             const totalPrice = document.getElementById('total-price');
             
             cartContainer.innerHTML = '';
-    
+
             let itemCount = 0;
             let total = 0;
-    
+
             cartItems.forEach(item => {
                 itemCount += item.quantity;
                 total += item.price * item.quantity;
-    
+
                 const cartItem = document.createElement('div');
                 cartItem.className = 'cart-item';
-    
+
                 cartItem.innerHTML = `
                     <img src="${item.image}" alt="${item.name}">
                     <div class="cart-item-details">
@@ -320,17 +263,17 @@
                         <button class="remove-button" onclick="removeItem(${item.id})">Remove</button>
                     </div>
                 `;
-    
+
                 cartContainer.appendChild(cartItem);
             });
-    
+
             totalItems.textContent = itemCount;
             totalPrice.textContent = `$${total.toFixed(2)}`;
-    
+
             // Store cart items in localStorage
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
         }
-    
+
         function changeQuantity(id, change) {
             const item = cartItems.find(item => item.id === id);
             if (item) {
@@ -338,7 +281,7 @@
                 updateCart();
             }
         }
-    
+
         function removeItem(id) {
             const index = cartItems.findIndex(item => item.id === id);
             if (index !== -1) {
@@ -346,12 +289,16 @@
                 updateCart();
             }
         }
-    
+
+        function proceedToCheckout() {
+            // Navigate to the checkout page
+            window.location.href = 'checkout.html';
+        }
+
+        // Initialize cart
         document.addEventListener('DOMContentLoaded', () => {
             updateCart();
         });
     </script>
-    
- 
 </body>
 </html>

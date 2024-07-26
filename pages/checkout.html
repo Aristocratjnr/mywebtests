@@ -149,6 +149,48 @@
             background-color: #555;
         }
 
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+        }
+
+        .modal-content button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .modal-content button:hover {
+            background-color: #555;
+        }
+
         /* Media Queries */
         @media (max-width: 768px) {
             .checkout-form {
@@ -229,21 +271,10 @@
                         <input type="text" id="address" name="address" required>
                     </div>
                     <div class="form-group">
-                        <label for="city">City</label>
-                        <input type="text" id="city" name="city" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="state">State</label>
-                        <input type="text" id="state" name="state" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="zip">Zip Code</label>
-                        <input type="text" id="zip" name="zip" required>
-                    </div>
-                    <div class="form-group">
                         <label for="country">Country</label>
-                        <select id="country" name="country" required>
+                        <select id="country" name="country" required >
                             <option value="">Select Country</option>
+                            <option>Ghana</option>
                             <!-- Add more countries as needed -->
                         </select>
                     </div>
@@ -270,39 +301,88 @@
             
             <div class="order-summary">
                 <h2>Order Summary</h2>
-                <div class="order-item">
-                    <img src="item1.jpg" alt="Item 1">
-                    <div class="order-item-details">
-                        <h3>Item Name</h3>
-                        <p>Quantity: 2</p>
-                        <p>Price: $49.99</p>
-                    </div>
-                    <p>$99.98</p>
+                <div id="order-items">
+                    <!-- Order items will be dynamically inserted here -->
                 </div>
-                <!-- Add more items as needed -->
-                <p class="total">Total: <span id="total-price">$149.97</span></p>
+                <p class="total">Total: <span id="total-price">$0.00</span></p>
                 <button class="checkout-button" onclick="validateForms(event)">Place Order</button>
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for your purchase. Your order has been successfully placed.</p>
+            <button onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
     <script>
-        // Fetch cart items from localStorage
-        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    
+        document.addEventListener('DOMContentLoaded', () => {
+            displayOrderSummary();
+        });
+
+        function validateForms(event) {
+            event.preventDefault();
+            const billingForm = document.getElementById('billing-form');
+            const paymentForm = document.getElementById('payment-form');
+
+            const billingIsValid = validateForm(billingForm);
+            const paymentIsValid = validateForm(paymentForm);
+
+            if (billingIsValid && paymentIsValid) {
+                showModal();
+                // Clear cart data
+                localStorage.removeItem('cartItems');
+                // Reset form and order summary
+                billingForm.reset();
+                paymentForm.reset();
+                displayOrderSummary(); // Clear the order summary display
+            } else {
+                alert('Please fill out all required fields correctly.');
+            }
+        }
+
+        function validateForm(form) {
+            let isValid = true;
+            const inputs = form.querySelectorAll('input, select');
+
+            inputs.forEach(input => {
+                if (!input.checkValidity()) {
+                    input.classList.add('invalid');
+                    isValid = false;
+                } else {
+                    input.classList.remove('invalid');
+                }
+            });
+
+            return isValid;
+        }
+
+        function showModal() {
+            document.getElementById('success-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('success-modal').style.display = 'none';
+        }
+
         function displayOrderSummary() {
-            const orderSummary = document.querySelector('.order-summary');
-            const totalPriceElement = document.getElementById('total-price');
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const orderItemsContainer = document.getElementById('order-items');
+            const totalPrice = document.getElementById('total-price');
             
-            orderSummary.innerHTML = '';
-    
+            orderItemsContainer.innerHTML = '';
+
             let total = 0;
-    
+
             cartItems.forEach(item => {
                 total += item.price * item.quantity;
-    
+
                 const orderItem = document.createElement('div');
                 orderItem.className = 'order-item';
-    
                 orderItem.innerHTML = `
                     <img src="${item.image}" alt="${item.name}">
                     <div class="order-item-details">
@@ -312,24 +392,11 @@
                     </div>
                     <p>$${(item.price * item.quantity).toFixed(2)}</p>
                 `;
-    
-                orderSummary.appendChild(orderItem);
+                orderItemsContainer.appendChild(orderItem);
             });
-    
-            totalPriceElement.textContent = `$${total.toFixed(2)}`;
+
+            totalPrice.innerText = `$${total.toFixed(2)}`;
         }
-    
-        function validateForms(event) {
-            event.preventDefault();
-            // Form validation logic here...
-            alert('Order placed successfully!');
-        }
-    
-        document.addEventListener('DOMContentLoaded', () => {
-            displayOrderSummary();
-        });
     </script>
-    
 </body>
 </html>
- 
