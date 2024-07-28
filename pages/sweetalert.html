@@ -39,7 +39,12 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 30px;
             max-width: 400px;
-            width: 100%;
+            width: 90%; /* Adjusted for better responsiveness */
+            box-sizing: border-box; /* Ensure padding is included in the width */
+            display: flex; /* Use flexbox */
+            flex-direction: column; /* Align items vertically */
+            justify-content: center; /* Center items vertically */
+            align-items: center; /* Center items horizontally */
         }
         .container h2 {
             margin-top: 0;
@@ -47,14 +52,16 @@
             text-align: center;
             margin-bottom: 20px;
             font-size: 1.5em;
+            width: 100%; /* Make sure the title spans full width */
         }
         input, textarea, button {
-            width: 100%;
+            width: 100%; /* Ensure full width */
             padding: 10px;
             margin: 10px 0;
             border-radius: 5px;
             border: 1px solid #ddd;
             font-size: 14px;
+            box-sizing: border-box; /* Ensure padding is included in the width */
         }
         input:focus, textarea:focus {
             border-color: #007BFF;
@@ -69,6 +76,19 @@
         }
         button:hover {
             background-color: #0056b3;
+        }
+
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            .container h2 {
+                font-size: 1.2em;
+            }
+            input, textarea, button {
+                font-size: 13px;
+            }
         }
     </style>
 </head>
