@@ -259,6 +259,25 @@
       border-radius: 8px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
+    #contact-support {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#contact-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
 
     /* Responsive Styles */
     @media (max-width: 991px) {
@@ -662,6 +681,13 @@
       </section>
       <img src="radans.png" alt="image" width="100%" height="100%">
 
+      <div id="contact-support">
+        <a href="./pages/sweetalert.html">
+            <img src="./pages/aristo.png" alt="Contact Support" id="contact-icon">
+        </a>
+    </div>
+    
+
     <script>
         document.querySelector('.menu-toggle').addEventListener('click', () => {
             document.querySelector('nav ul').classList.toggle('active');
@@ -748,6 +774,11 @@ document.getElementById('search-input').addEventListener('input', (e) => {
   highlightText(searchText);
 });
 
+
+document.getElementById('contact-icon').addEventListener('click', function(event) {
+        // Optional: Add analytics tracking or other logic here
+        window.location.href = './pages/sweetalert.html';
+    });
     
         // Toggle FAQ answer visibility
         const faqItems = document.querySelectorAll('.faq-item');
