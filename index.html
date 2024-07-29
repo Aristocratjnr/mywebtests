@@ -65,11 +65,16 @@
             color: #DAA520;
         }
 
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
+        /* Show the menu when active */
+.navbar ul.active {
+    display: flex;
+}
+
+/* Menu toggle button visible on small screens */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
 
         .search-login {
             display: flex;
@@ -279,6 +284,7 @@
     transform: scale(1.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
+
 
     /* Responsive Styles */
     @media (max-width: 991px) {
@@ -506,6 +512,13 @@
   .section img {
     margin: 0 auto 1.5rem;
   }
+  .menu-toggle {
+        display: block;
+    }
+    
+  .navbar ul {
+        display: none;
+    }
 
   .section-content {
     margin: 0;
@@ -539,6 +552,7 @@
                 <img src="image.ico" alt="Kayujati Logo" style="height: 40px;">
             </div>
             <nav>
+              <div class="menu-toggle">☰</div>
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#about-us">About</a></li>
@@ -547,7 +561,7 @@
                     <li><a href="./pages/form.html">Contact</a></li>
                 </ul>
             </nav>
-            <div class="menu-toggle">☰</div>
+          
             <div class="search-login">
                 <input type="text" id="search-input" placeholder="What are you looking for?">
                 <i>
