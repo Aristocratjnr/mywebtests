@@ -218,7 +218,7 @@
             <div class="cart-summary">
                 <h2>Summary</h2>
                 <p>Total Items: <span id="total-items">0</span></p>
-                <p>Total Price: <span id="total-price">$0.00</span></p>
+                <p>Total Price: <span id="total-price">₵0.00</span></p>
                 <button class="checkout-button" onclick="proceedToCheckout()">Checkout</button>
             </div>
         </main>
@@ -252,7 +252,7 @@
                     <img src="${item.image}" alt="${item.name}">
                     <div class="cart-item-details">
                         <h3>${item.name}</h3>
-                        <p>Price: $${item.price.toFixed(2)}</p>
+                        <p>Price: ₵${item.price.toFixed(2)}</p>
                         <div class="quantity-controls">
                             <button class="decrease" onclick="changeQuantity(${item.id}, -1)">-</button>
                             <span>Quantity: ${item.quantity}</span>
