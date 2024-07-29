@@ -391,14 +391,14 @@ h1 {
                     <div class="order-item-details">
                         <h3>${item.name}</h3>
                         <p>Quantity: ${item.quantity}</p>
-                        <p>Price: $${item.price.toFixed(2)}</p>
+                        <p>Price: ₵${item.price.toFixed(2)}</p>
                     </div>
-                    <p>$${(item.price * item.quantity).toFixed(2)}</p>
+                    <p>₵${(item.price * item.quantity).toFixed(2)}</p>
                 `;
                 orderItemsContainer.appendChild(orderItem);
             });
 
-            totalPrice.innerText = `$${total.toFixed(2)}`;
+            totalPrice.innerText = `₵${total.toFixed(2)}`;
         }
     </script>
 </body>
