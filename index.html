@@ -249,10 +249,30 @@
       color: #8c7b53;
       margin-right: 15px;
     }
-    .content li:hover {
-      background-color:#f0bc54;
+ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
 }
-  
+
+li {
+    padding: 10px; /* Add some space around the list items */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+li:hover {
+    background-color: #f0f0f0; /* Change the background color on hover */
+}
+
+a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from list item */
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline on hover for links */
+}
+
+   
     /* Image Styles */
     .image {
       flex: 1;
@@ -632,7 +652,7 @@
               <li>Free Consultation</li>
               <li>Custom Furniture</li>
               <li>Furniture Assembling</li>
-              <li>Training Sessions</li>
+              <li><a href="">Training Sessions</a></li>
               <li>Free Delivery</li>
             </ul>
           </div>
