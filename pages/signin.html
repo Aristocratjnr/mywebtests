@@ -16,11 +16,11 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            box-sizing: border-box; /* Added to include padding and border in the element's total width and height */
+            box-sizing: border-box;
         }
         .container {
             display: flex;
-            flex-direction: row; /* Side by side for larger screens */
+            flex-direction: row;
             width: 90%;
             max-width: 1200px;
             background: #ffffff;
@@ -125,7 +125,6 @@
         a:hover {
             text-decoration: underline;
         }
-        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -173,16 +172,15 @@
             font-size: 1.1em;
             color: #555;
         }
-        /* Responsive styles */
         @media (max-width: 768px) {
             .container {
-                flex-direction: column; /* Stack vertically on small screens */
+                flex-direction: column;
             }
             .left-side, .right-side {
                 padding: 10px;
             }
             .left-side {
-                min-height: 200px; /* Minimum height for better visual structure */
+                min-height: 200px;
             }
             .form-container {
                 width: 100%;
@@ -203,71 +201,107 @@
     <div class="container">
         <div class="left-side">
             <div class="content">
-                <h1>Ready for More Inspiration?</h1>
-                <p>Log In to Discover New Designs.</p>
+                <h1 data-lang="heading">Ready for More Inspiration?</h1>
+                <p data-lang="subheading">Log In to Discover New Designs.</p>
             </div>
         </div>
         <div class="right-side">
             <div class="language-selector">
                 <select name="language" id="language">
                     <option value="en">English (UK)</option>
-                    <option value="en-us">English (US)</option>
                     <option value="es">Español</option>
                 </select>
             </div>
             <div class="form-container">
-                <h2>Welcome back</h2>
-                <h3>Login to your account</h3>
+                <h2 data-lang="welcome">Welcome back</h2>
+                <h3 data-lang="login">Login to your account</h3>
                 <form id="loginForm">
                     <div class="input-group">
-                        <label for="email">Email</label>
+                        <label for="email" data-lang="email-label">Email</label>
                         <input type="email" id="email" placeholder="your mail" required>
                     </div>
                     <div class="input-group">
-                        <label for="password">Password</label>
+                        <label for="password" data-lang="password-label">Password</label>
                         <input type="password" id="password" placeholder="Enter your password" required>
-                        <a href="#" class="forgot">Forgot?</a>
+                        <a href="#" class="forgot" data-lang="forgot">Forgot?</a>
                     </div>
-                    <button type="submit" class="login-btn">Login now</button>
+                    <button type="submit" class="login-btn" data-lang="login-btn">Login now</button>
                 </form>
-                <p>Don't Have An Account? <a href="./account.html">Sign Up</a></p>
+                <p data-lang="signup-text">Don't Have An Account? <a href="./account.html" data-lang="signup-link">Sign Up</a></p>
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
     <div id="successModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <div class="modal-header">Login Successful</div>
+            <div class="modal-header" data-lang="modal-header">Login Successful</div>
             <div class="modal-body">
-                <p>You have been logged in successfully!</p>
-                <p class="redirect-message">Redirecting you to your dashboard🤖...</p>
+                <p data-lang="modal-body">You have been logged in successfully!</p>
+                <p class="redirect-message" data-lang="redirect-message">Redirecting you to your dashboard...</p>
             </div>
         </div>
     </div>
 
     <script>
-                // Get modal element
+        const translations = {
+            en: {
+                heading: "Ready for More Inspiration?",
+                subheading: "Log In to Discover New Designs.",
+                welcome: "Welcome back",
+                login: "Login to your account",
+                emailLabel: "Email",
+                passwordLabel: "Password",
+                forgot: "Forgot?",
+                loginBtn: "Login now",
+                signupText: "Don't Have An Account?",
+                signupLink: "Sign Up",
+                modalHeader: "Login Successful",
+                modalBody: "You have been logged in successfully!",
+                redirectMessage: "Redirecting you to your dashboard..."
+            },
+            es: {
+                heading: "¿Listo para más inspiración?",
+                subheading: "Inicia sesión para descubrir nuevos diseños.",
+                welcome: "Bienvenido de nuevo",
+                login: "Inicia sesión en tu cuenta",
+                emailLabel: "Correo electrónico",
+                passwordLabel: "Contraseña",
+                forgot: "¿Olvidaste?",
+                loginBtn: "Iniciar sesión",
+                signupText: "¿No tienes una cuenta?",
+                signupLink: "Regístrate",
+                modalHeader: "Inicio de sesión exitoso",
+                modalBody: "¡Has iniciado sesión con éxito!",
+                redirectMessage: "Redirigiéndote a tu panel de control..."
+            }
+        };
+
+        document.getElementById('language').addEventListener('change', function() {
+            const selectedLang = this.value;
+            document.querySelectorAll('[data-lang]').forEach(elem => {
+                const key = elem.getAttribute('data-lang');
+                if (translations[selectedLang] && translations[selectedLang][key]) {
+                    elem.textContent = translations[selectedLang][key];
+                }
+            });
+        });
+
         var modal = document.getElementById("successModal");
-              // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
-        // Form submission event
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
-        // Display the modal
             modal.style.display = "block";
-            // Redirect after a delay
             setTimeout(function() {
                 window.location.href = "dashboard.html";
             }, 3000);
         });
-         // When the user clicks on <span> (x), close the modal
+
         span.onclick = function() {
             modal.style.display = "none";
         }
-         // When the user clicks anywhere outside of the modal, close it
+
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
