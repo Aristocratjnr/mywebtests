@@ -288,21 +288,17 @@
             
             <div class="form-section">
                 <h2>Payment Information</h2>
-                <form id="payment-form">
+                <form id="paymentForm">
                     <div class="form-group">
-                        <label for="card-number">Card Number</label>
-                        <input type="text" id="card-number" name="card-number" required>
+                      <label for="email">Email</label>
+                      <input type="email" id="email" placeholder="Email" required />
                     </div>
                     <div class="form-group">
-                        <label for="card-expiry">Expiry Date</label>
-                        <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY" required>
+                      <label for="amount">Amount</label>
+                      <input type="number" id="amount" placeholder="Amount" required />
                     </div>
-                    <div class="form-group">
-                        <label for="card-cvc">CVC</label>
-                        <input type="text" id="card-cvc" name="card-cvc" required>
-                    </div>
-                    <button type="button" class="pay-button"onclick="payWithPaystack()>Pay</button>
-                </form>
+                    <button type="button" class="pay-button" onclick="payWithPaystack()">Pay</button>
+                  </form>                  
             </div>
             
             <div class="order-summary">
@@ -422,7 +418,7 @@
 
 function payWithPaystack() {
   var handler = PaystackPop.setup({
-    key: 'YOUR_PUBLIC_KEY', // Replace with your public key
+    key: '', // Replace with your public key
     email: document.getElementById("email").value,
     amount: document.getElementById("amount").value * 100, // Amount in kobo
     currency: 'GH', // Set currency
