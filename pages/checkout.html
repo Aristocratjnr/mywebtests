@@ -416,16 +416,16 @@
             totalPrice.innerText = `₵${total.toFixed(2)}`;
         }
 
-function payWithPaystack() {
+ function payWithPaystack() {
   var handler = PaystackPop.setup({
-    key: '', // Replace with your public key
+    key: '', 
     email: document.getElementById("email").value,
-    amount: document.getElementById("amount").value * 100, // Amount in kobo
-    currency: 'GH', // Set currency
+    amount: document.getElementById("amount").value * 100, // Amount in pesewas (1 GHS = 100 pesewas)
+    currency: 'GHS', // Set currency to Ghanaian Cedi
     ref: 'ref_' + Math.floor(Math.random() * 1000000000), // Unique reference number
     callback: function(response) {
       alert('Payment successful! Transaction reference: ' + response.reference);
-      // You can make an AJAX call here to your server to verify the transaction
+      // Optionally, make an AJAX call to your server to verify the transaction
     },
     onClose: function() {
       alert('Transaction was not completed, window closed.');
