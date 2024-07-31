@@ -301,7 +301,7 @@
                         <label for="card-cvc">CVC</label>
                         <input type="text" id="card-cvc" name="card-cvc" required>
                     </div>
-                    <button type="button" class="pay-button" onclick="showCheckingModal()">Pay</button>
+                    <button type="button" class="pay-button"onclick="payWithPaystack()>Pay</button>
                 </form>
             </div>
             
@@ -419,6 +419,25 @@
 
             totalPrice.innerText = `₵${total.toFixed(2)}`;
         }
+
+function payWithPaystack() {
+  var handler = PaystackPop.setup({
+    key: 'YOUR_PUBLIC_KEY', // Replace with your public key
+    email: document.getElementById("email").value,
+    amount: document.getElementById("amount").value * 100, // Amount in kobo
+    currency: 'GH', // Set currency
+    ref: 'ref_' + Math.floor(Math.random() * 1000000000), // Unique reference number
+    callback: function(response) {
+      alert('Payment successful! Transaction reference: ' + response.reference);
+      // You can make an AJAX call here to your server to verify the transaction
+    },
+    onClose: function() {
+      alert('Transaction was not completed, window closed.');
+    }
+  });
+  handler.openIframe();
+}
+
     </script>
 </body>
 </html>
