@@ -418,7 +418,7 @@
 
  function payWithPaystack() {
   var handler = PaystackPop.setup({
-    key: 'config.PAYSTACK_PUBLIC_KEY', 
+    key: 'config.PAYSTACK_PUBLIC_KEY', // Replace with your public key
     email: document.getElementById("email").value,
     amount: document.getElementById("amount").value * 100, // Amount in pesewas (1 GHS = 100 pesewas)
     currency: 'GHS', // Set currency to Ghanaian Cedi
