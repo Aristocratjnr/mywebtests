@@ -445,22 +445,22 @@
     }
 
     function payWithPaystack() {
-  var handler = PaystackPop.setup({
-    key: 'config.PAYSTACK_PUBLIC_KEY', // Replace with your public key
-    email: document.getElementById("email").value,
-    amount: document.getElementById("amount").value * 100, // Amount in pesewas (1 GHS = 100 pesewas)
-    currency: 'GHS', // Set currency to Ghanaian Cedi
-    ref: 'ref_' + Math.floor(Math.random() * 1000000000), // Unique reference number
-    callback: function(response) {
-      alert('Payment successful! Transaction reference: ' + response.reference);
-      // Optionally, make an AJAX call to your server to verify the transaction
-    },
-    onClose: function() {
-      alert('Transaction was not completed, window closed.');
-    }
-  });
-  handler.openIframe();
+    var handler = PaystackPop.setup({
+        key: 'pk_test_36baf0a3f26aa4acc1993918bb494422b073b581', //This is jusr a test key.
+        email: document.getElementById('email').value,
+        amount: document.getElementById('amount').value * 100, // Amount in cedis
+        currency: 'GHS',
+        callback: function(response) {
+            alert('Payment complete! Reference: ' + response.reference);
+            // You can also send the reference to your server for further processing
+        },
+        onClose: function() {
+            alert('Transaction was not completed');
+        }
+    });
+    handler.openIframe();
 }
+
 </script>
 
 </body>
