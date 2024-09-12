@@ -79,6 +79,35 @@
             background-color: #0056b3;
         }
 
+        /* Notification Badge Styles */
+        .notification-icon {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            margin: 20px;
+        }
+        .notification-icon .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #e74c3c;
+            color: #fff;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
         /* Responsive design */
         @media (max-width: 480px) {
             .container {
@@ -97,6 +126,10 @@
 
     <div class="overlay"></div>
     <div class="container">
+        <div class="notification-icon">
+            <span>🔔</span>
+            <div class="badge" id="notificationCount">5</div>
+        </div>
         <h2>Enquiries 🧾</h2>
         <form id="enquiryForm">
             <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -136,6 +169,14 @@
                 }
             });
         });
+
+        // Example to dynamically update the notification count
+        function updateNotificationCount(count) {
+            document.getElementById('notificationCount').innerText = count;
+        }
+
+        // Update the notification count (for demo purposes)
+        updateNotificationCount(5); // Change this value as needed
     </script>
 </body>
 </html>
