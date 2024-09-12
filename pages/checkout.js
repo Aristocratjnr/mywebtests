@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     displayOrderSummary();
+    const totalAmount = localStorage.getItem('totalAmount');
+    if (totalAmount) {
+        document.getElementById('amount').value = totalAmount;
+    }
 });
 
 function validateForms(event) {
@@ -11,13 +15,17 @@ function validateForms(event) {
     const paymentIsValid = validateForm(paymentForm);
 
     if (billingIsValid && paymentIsValid) {
-        showModal();
-        // Clear cart data
-        localStorage.removeItem('cartItems');
-        // Reset form and order summary
-        billingForm.reset();
-        paymentForm.reset();
-        displayOrderSummary(); // Clear the order summary display
+        showCheckingModal();
+        setTimeout(() => {
+            showModal();
+            // Clear cart data
+            localStorage.removeItem('cartItems');
+            localStorage.removeItem('totalAmount'); // Clear total amount
+            // Reset form and order summary
+            billingForm.reset();
+            paymentForm.reset();
+            displayOrderSummary(); // Clear the order summary display
+        }, 2000); // Simulate processing time
     } else {
         alert('Please fill out all required fields correctly.');
     }
@@ -88,14 +96,19 @@ function displayOrderSummary() {
 function payWithPaystack() {
     const amountInCedis = parseFloat(document.getElementById('amount').value);
 
-    var handler = PaystackPop.setup({
-        key: 'pk_test_36baf0a3f26aa4acc1993918bb494422b073b581', 
+    if (!amountInCedis) {
+        alert('Please provide a valid amount.');
+        return;
+    }
+
+    const handler = PaystackPop.setup({
+        key: 'pk_test_36baf0a3f26aa4acc1993918bb494422b073b581', // Test key
         email: document.getElementById('email').value,
-        amount: amountInCedis * 100,
+        amount: amountInCedis * 100, // Convert to kobo
         currency: 'GHS',
         callback: function(response) {
             alert('Payment complete! Reference: ' + response.reference);
-           
+            // Optionally send the reference to your server for further processing
         },
         onClose: function() {
             alert('Transaction was not completed');
