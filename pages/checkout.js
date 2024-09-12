@@ -102,10 +102,9 @@ function payWithPaystack() {
     }
 
     const handler = PaystackPop.setup({
-        key: 'pk_test_36baf0a3f26aa4acc1993918bb494422b073b581', // Test key
+        key: 'pk_test_36baf0a3f26aa4acc1993918bb494422b073b581', 
         email: document.getElementById('email').value,
-        amount: amountInCedis * 100, // Convert to kobo
-        currency: 'GHS',
+        amount: amountInCedis * 100, 
         callback: function(response) {
             alert('Payment complete! Reference: ' + response.reference);
             // Optionally send the reference to your server for further processing
