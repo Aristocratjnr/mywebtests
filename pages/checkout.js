@@ -116,3 +116,10 @@ function payWithPaystack() {
     });
     handler.openIframe();
 }
+
+
+
+
+
+
+
