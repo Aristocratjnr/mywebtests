@@ -1,6 +1,5 @@
 const cartItems = [
     { id: 1, name: 'Tibet Five Set Kitchen Cabinet', price: 499.99, image: 'room.png', quantity: 1 },
-    // Add more items here
 ];
 
 function updateCart() {
@@ -65,7 +64,7 @@ function removeItem(id) {
 
 function proceedToCheckout() {
     // Navigate to the checkout page
-    window.location.href = 'checkout.html';
+    window.location.href = './checkout.html';
 }
 
 // Initialize cart
