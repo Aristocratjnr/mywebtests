@@ -26,9 +26,9 @@
 
         .container {
             width: 100%;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 20px;
-            padding: 20px;
+            padding: 30px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -222,6 +222,73 @@
         padding: 10px 15px; /* Adjust button padding */
     }
 }
+
+/* Improved Checkout Form Styles */
+.checkout-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+/* Larger gaps between sections */
+.form-section {
+    padding: 25px;
+    background-color: #f7f8fa;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Make headings bolder and centered */
+h2 {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Improved input and select fields */
+.form-group input,
+.form-group select {
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+/* Improve button styling */
+.pay-button, .checkout-button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.pay-button:hover, .checkout-button:hover {
+    background-color: #2563eb;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .checkout-form {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 
         /* Media Queries */
